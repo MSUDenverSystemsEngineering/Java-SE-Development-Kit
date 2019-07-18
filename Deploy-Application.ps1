@@ -65,7 +65,7 @@ Try {
 	## Variables: Application
 	[string]$appVendor = 'Oracle'
 	[string]$appName = 'Java SE Development Kit'
-	[string]$appVersion = '12.0.2 '
+	[string]$appVersion = '12.0.2'
 	[string]$appArch = 'x64'
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
@@ -129,6 +129,8 @@ Try {
 		$exitCode = Remove-MSIApplications -Name "Java SE Development Kit 8 Update" -FilterApplication (,('Publisher', 'Oracle', 'RegEx')) -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 		$exitCode = Remove-MSIApplications -Name "Java SE Development Kit 7 Update" -FilterApplication (,('Publisher', 'Oracle', 'RegEx')) -PassThru
+		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
+		$exitCode = Remove-MSIApplications -Name "Java(TM) SE Development Kit 12" -FilterApplication (,('Publisher', 'Oracle', 'RegEx')) -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 		##*===============================================
