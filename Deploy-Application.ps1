@@ -198,7 +198,11 @@ Try {
 		[string]$installPhase = 'Post-Uninstallation'
 
 		## <Perform Post-Uninstallation tasks here>
-
+		Remove-Folder -Path "$envProgramData\Microsoft\Windows\Start Menu\Programs\Java Development Kit"
+		## remove the full path of the jdk-12.0.2\bin directory from the PATH variable
+		$Remove = "C:\Program Files\Java\jdk-$appVersion\bin"
+		$env:Path = ($env:Path.Split(';') | Where-Object -FilterScript {$_ -ne $Remove}) -join ';'
+		[Environment]::SetEnvironmentVariable("Path", $env:Path, "Machine")
 
 	}
 
