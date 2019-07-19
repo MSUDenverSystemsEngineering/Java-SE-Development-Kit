@@ -156,7 +156,7 @@ Try {
 
 		## <Perform Post-Installation tasks here>
 		## add the full path of the jdk-12\bin directory to the PATH variable
-		[Environment]::SetEnvironmentVariable("Path", $env:Path + ";" + "C:\Program Files\Java\jdk-12\bin", "Machine")
+		[Environment]::SetEnvironmentVariable("Path", $env:Path + ";" + "C:\Program Files\Java\jdk-$appVersion\bin", "Machine")
 		## Display a message at the end of the install
 		If (-not $useDefaultMsi) {
 
